@@ -29,18 +29,18 @@
   --accent-fg: #0d0d0d;
 }
 
-/* Light mode */
+/* Light mode — warm cognac & walnut */
 .light {
-  --bg: #2c2824;
-  --fg: #e8e0d4;
-  --surface: #342f2a;
-  --card: #3a3530;
-  --footer: #242019;
-  --muted: #9a9088;
-  --border: #4a443d;
-  --accent: #c9a84c;
-  --accent-hover: #dabb5e;
-  --accent-fg: #1a1510;
+  --bg: #1e1915;
+  --fg: #ede4d6;
+  --surface: #261f1a;
+  --card: #30271f;
+  --footer: #161210;
+  --muted: #b0a394;
+  --border: #453929;
+  --accent: #d4a93e;
+  --accent-hover: #e8bd4f;
+  --accent-fg: #12100c;
 }
 
 @font-face {
