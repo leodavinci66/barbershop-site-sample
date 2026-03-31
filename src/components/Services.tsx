@@ -19,10 +19,10 @@ const serviceIcons = [
 ];
 
 const cardGlows = [
-  "from-amber-500/20 via-yellow-600/10 to-transparent",
-  "from-orange-500/15 via-amber-600/10 to-transparent",
-  "from-yellow-500/20 via-amber-500/10 to-transparent",
-  "from-amber-400/25 via-yellow-500/10 to-transparent",
+  "from-amber-500/40 via-yellow-600/20 to-transparent",
+  "from-orange-500/35 via-amber-600/20 to-transparent",
+  "from-yellow-500/40 via-amber-500/20 to-transparent",
+  "from-amber-400/45 via-yellow-500/25 to-transparent",
 ];
 
 export default function Services() {
@@ -67,34 +67,49 @@ export default function Services() {
               {/* Pulsing background glow */}
               <motion.div
                 animate={{
-                  opacity: [0.3, 0.6, 0.3],
-                  scale: [1, 1.05, 1],
+                  opacity: [0.4, 0.9, 0.4],
+                  scale: [1, 1.15, 1],
                 }}
                 transition={{
-                  duration: 3 + i * 0.5,
+                  duration: 2.5 + i * 0.4,
                   repeat: Infinity,
                   ease: "easeInOut",
-                  delay: i * 0.8,
+                  delay: i * 0.7,
                 }}
-                className={`absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gradient-to-br ${cardGlows[i]} blur-3xl`}
+                className={`absolute -top-12 -right-12 h-56 w-56 rounded-full bg-gradient-to-br ${cardGlows[i]} blur-2xl`}
               />
 
               {/* Bottom corner glow pulse */}
               <motion.div
                 animate={{
-                  opacity: [0.1, 0.35, 0.1],
+                  opacity: [0.15, 0.5, 0.15],
+                  scale: [1, 1.1, 1],
                 }}
                 transition={{
-                  duration: 4 + i * 0.3,
+                  duration: 3 + i * 0.3,
                   repeat: Infinity,
                   ease: "easeInOut",
-                  delay: i * 0.6 + 1,
+                  delay: i * 0.5 + 1,
                 }}
-                className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-accent/10 blur-3xl"
+                className="absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-accent/15 blur-2xl"
+              />
+
+              {/* Persistent border glow */}
+              <motion.div
+                animate={{
+                  opacity: [0.05, 0.15, 0.05],
+                }}
+                transition={{
+                  duration: 3 + i * 0.4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.6,
+                }}
+                className="absolute inset-0 border border-accent/20 pointer-events-none"
               />
 
               {/* Hover glow intensifier */}
-              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-b from-accent/10 via-accent/5 to-transparent" />
+              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-b from-accent/15 via-accent/8 to-transparent" />
 
               {/* Top accent line */}
               <div className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-accent via-amber-400 to-accent transition-all duration-500 group-hover:w-full" />
@@ -103,9 +118,9 @@ export default function Services() {
                 {/* Icon with glow ring */}
                 <div className="relative mb-6 inline-flex">
                   <motion.div
-                    animate={{ opacity: [0.4, 0.8, 0.4] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-                    className="absolute inset-0 -m-2 rounded-full bg-accent/10 blur-md"
+                    animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.3, 1] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+                    className="absolute inset-0 -m-3 rounded-full bg-accent/15 blur-lg"
                   />
                   <div className="relative text-accent">{serviceIcons[i]}</div>
                 </div>
