@@ -47,14 +47,16 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Testimonial cards */}
-        <div className="mt-20 grid gap-8 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <motion.div
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-20 grid gap-8 md:grid-cols-3"
+        >
+          {testimonials.map((t) => (
+            <div
               key={t.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="group relative bg-[#1a1a1a] p-8 border border-[#2a2a2a] transition-all duration-500 hover:border-[#c9a84c]/20"
             >
               {/* Quote mark */}
@@ -93,9 +95,9 @@ export default function Testimonials() {
                   </svg>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

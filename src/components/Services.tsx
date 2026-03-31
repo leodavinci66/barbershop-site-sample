@@ -80,14 +80,16 @@ export default function Services() {
         </motion.div>
 
         {/* Cards grid */}
-        <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service, i) => (
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {services.map((service) => (
             <motion.div
               key={service.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -8 }}
               className="group relative overflow-hidden bg-[#1a1a1a] p-8 transition-all duration-500 border border-transparent hover:border-[#c9a84c]/30"
             >
@@ -120,7 +122,7 @@ export default function Services() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
