@@ -1,20 +1,46 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-charcoal: #1a1a1a;
-  --color-midnight: #0d0d0d;
-  --color-surface: #131313;
-  --color-surface-light: #1f1f1f;
-  --color-surface-lighter: #2a2a2a;
-  --color-brass: #c9a84c;
-  --color-brass-light: #e6c364;
-  --color-brass-dim: #a08a3a;
-  --color-espresso: #2c1a0e;
-  --color-cream: #f5f0e8;
-  --color-muted: #a0a0a0;
-  --color-border: #2a2a2a;
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-footer: var(--footer);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
   --font-serif: "Playfair Display", "EB Garamond", Georgia, serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+/* Dark mode (default) */
+:root, .dark {
+  --bg: #0d0d0d;
+  --fg: #f5f0e8;
+  --surface: #131313;
+  --card: #1a1a1a;
+  --footer: #0a0a0a;
+  --muted: #a0a0a0;
+  --border: #2a2a2a;
+  --accent: #c9a84c;
+  --accent-hover: #e6c364;
+  --accent-fg: #0d0d0d;
+}
+
+/* Light mode */
+.light {
+  --bg: #f5f0e8;
+  --fg: #1a1a1a;
+  --surface: #eae5dc;
+  --card: #ffffff;
+  --footer: #e0dbd2;
+  --muted: #6b6b6b;
+  --border: #d4cfc6;
+  --accent: #a08530;
+  --accent-hover: #8a7228;
+  --accent-fg: #ffffff;
 }
 
 @font-face {
@@ -38,9 +64,10 @@ html {
 }
 
 body {
-  background: #0d0d0d;
-  color: #f5f0e8;
+  background: var(--bg);
+  color: var(--fg);
   font-family: "DM Sans", system-ui, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Grain texture overlay */
@@ -59,23 +86,27 @@ body {
   opacity: 0.5;
 }
 
+.light .grain-overlay::before {
+  opacity: 0.25;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0d0d;
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: var(--border);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c9a84c;
+  background: var(--accent);
 }
 
 /* Selection */
 ::selection {
   background: rgba(201, 168, 76, 0.3);
-  color: #f5f0e8;
+  color: var(--fg);
 }

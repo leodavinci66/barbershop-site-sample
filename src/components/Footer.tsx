@@ -1,19 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const footerLinks = [
-  { label: "Leistungen", href: "#services" },
-  { label: "Über Uns", href: "#about" },
-  { label: "Galerie", href: "#gallery" },
-  { label: "Kontakt", href: "#contact" },
-];
+import { useTranslation } from "@/context/TranslationContext";
 
 export default function Footer() {
+  const { lang, t } = useTranslation();
+
+  const footerLinks = [
+    { label: t.nav.services[lang], href: "#services" },
+    { label: t.nav.about[lang], href: "#about" },
+    { label: t.nav.gallery[lang], href: "#gallery" },
+    { label: t.nav.contact[lang], href: "#contact" },
+  ];
+
   return (
-    <footer className="relative bg-[#0a0a0a] py-16">
-      {/* Top divider */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-[#2a2a2a]" />
+    <footer className="relative bg-footer py-16">
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-border" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
@@ -24,14 +26,8 @@ export default function Footer() {
           className="flex flex-col items-center gap-8 md:flex-row md:justify-between"
         >
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
-            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" className="text-[#c9a84c]">
-              <path d="M16 2L20 8L28 8L22 14L24 22L16 18L8 22L10 14L4 8L12 8L16 2Z" fill="currentColor" opacity="0.2"/>
-              <path d="M16 4L19 9H27L21 13.5L23 20.5L16 16.5L9 20.5L11 13.5L5 9H13L16 4Z" stroke="currentColor" strokeWidth="1.5"/>
-            </svg>
-            <span className="font-serif text-lg font-bold tracking-wider uppercase text-cream">
-              Barbershop <span className="text-[#c9a84c]">Wien</span>
-            </span>
+          <a href="#" className="font-serif text-lg font-bold tracking-wider uppercase text-fg">
+            Barbershop <span className="text-accent">Wien</span>
           </a>
 
           {/* Links */}
@@ -40,7 +36,7 @@ export default function Footer() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-[#a0a0a0] transition-colors hover:text-[#c9a84c]"
+                className="text-sm text-muted transition-colors hover:text-accent"
               >
                 {link.label}
               </a>
@@ -63,7 +59,7 @@ export default function Footer() {
                 key={social.name}
                 href="#"
                 aria-label={social.name}
-                className="flex h-9 w-9 items-center justify-center text-[#a0a0a0] transition-colors hover:text-[#c9a84c]"
+                className="flex h-9 w-9 items-center justify-center text-muted transition-colors hover:text-accent"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d={social.path} />
@@ -73,10 +69,9 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 border-t border-[#1a1a1a] pt-8 text-center">
-          <p className="text-xs text-[#a0a0a0]/50">
-            &copy; 2026 Barbershop Wien. Alle Rechte vorbehalten.
+        <div className="mt-12 border-t border-border pt-8 text-center">
+          <p className="text-xs text-muted/50">
+            &copy; 2026 {t.footer.rights[lang]}
           </p>
         </div>
       </div>

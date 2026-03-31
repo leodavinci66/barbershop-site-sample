@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Barbershop Wien | Erstklassige Herrenpflege",
@@ -16,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className="antialiased">
-      <body className="grain-overlay min-h-screen">{children}</body>
+    <html lang="de" className="dark antialiased">
+      <body className="grain-overlay min-h-screen">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

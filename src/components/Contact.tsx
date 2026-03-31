@@ -1,21 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const hours = [
-  { day: "Montag — Freitag", time: "09:00 — 19:00" },
-  { day: "Samstag", time: "09:00 — 16:00" },
-  { day: "Sonntag", time: "Geschlossen" },
-];
+import { useTranslation } from "@/context/TranslationContext";
 
 export default function Contact() {
+  const { lang, t } = useTranslation();
+
+  const hours = [
+    { day: t.contact.days.weekdays[lang], time: "09:00 — 19:00" },
+    { day: t.contact.days.saturday[lang], time: "09:00 — 16:00" },
+    { day: t.contact.days.sunday[lang], time: t.contact.closed[lang] },
+  ];
+
   return (
     <section id="contact" className="relative bg-surface py-32">
-      {/* Section divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-24 bg-gradient-to-r from-transparent via-accent to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,19 +24,18 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <span className="text-xs font-medium uppercase tracking-[0.3em] text-[#c9a84c]">
-            Kontakt
+          <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
+            {t.contact.label[lang]}
           </span>
-          <h2 className="mt-4 font-serif text-4xl font-bold tracking-tight text-cream sm:text-5xl md:text-6xl">
-            Besuche Uns
+          <h2 className="mt-4 font-serif text-4xl font-bold tracking-tight text-fg sm:text-5xl md:text-6xl">
+            {t.contact.heading[lang]}
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[#a0a0a0]">
-            Wir freuen uns auf deinen Besuch. Vereinbare jetzt deinen Termin.
+          <p className="mx-auto mt-4 max-w-lg text-muted">
+            {t.contact.subtitle[lang]}
           </p>
         </motion.div>
 
         <div className="mt-20 grid gap-12 lg:grid-cols-2">
-          {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -45,15 +45,15 @@ export default function Contact() {
           >
             {/* Address */}
             <div className="flex gap-5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#c9a84c]/10 text-[#c9a84c]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-accent/10 text-accent">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                   <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-cream">Adresse</h3>
-                <p className="mt-1 text-[#a0a0a0]">
+                <h3 className="font-semibold text-fg">{t.contact.address[lang]}</h3>
+                <p className="mt-1 text-muted">
                   Goldschmiedgasse 12
                   <br />
                   1010 Wien, Österreich
@@ -63,14 +63,14 @@ export default function Contact() {
 
             {/* Phone */}
             <div className="flex gap-5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#c9a84c]/10 text-[#c9a84c]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-accent/10 text-accent">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                   <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-cream">Telefon</h3>
-                <a href="tel:+4312345678" className="mt-1 block text-[#a0a0a0] hover:text-[#c9a84c] transition-colors">
+                <h3 className="font-semibold text-fg">{t.contact.phone[lang]}</h3>
+                <a href="tel:+4312345678" className="mt-1 block text-muted hover:text-accent transition-colors">
                   +43 1 234 5678
                 </a>
               </div>
@@ -78,18 +78,18 @@ export default function Contact() {
 
             {/* Hours */}
             <div className="flex gap-5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#c9a84c]/10 text-[#c9a84c]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-accent/10 text-accent">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                   <path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-cream">Öffnungszeiten</h3>
+                <h3 className="font-semibold text-fg">{t.contact.hours[lang]}</h3>
                 <div className="mt-2 space-y-2">
                   {hours.map((h) => (
                     <div key={h.day} className="flex justify-between gap-8 text-sm">
-                      <span className="text-[#a0a0a0]">{h.day}</span>
-                      <span className={h.time === "Geschlossen" ? "text-red-400/70" : "text-cream"}>
+                      <span className="text-muted">{h.day}</span>
+                      <span className={h.time === t.contact.closed[lang] ? "text-red-400/70" : "text-fg"}>
                         {h.time}
                       </span>
                     </div>
@@ -114,7 +114,7 @@ export default function Contact() {
                   key={social.name}
                   href="#"
                   aria-label={social.name}
-                  className="flex h-11 w-11 items-center justify-center border border-[#2a2a2a] text-[#a0a0a0] transition-all duration-300 hover:border-[#c9a84c] hover:text-[#c9a84c]"
+                  className="flex h-11 w-11 items-center justify-center border border-border text-muted transition-all duration-300 hover:border-accent hover:text-accent"
                 >
                   <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d={social.path} />
@@ -126,9 +126,9 @@ export default function Contact() {
             {/* Big CTA */}
             <a
               href="#"
-              className="group relative mt-4 inline-flex w-full items-center justify-center gap-3 overflow-hidden bg-[#c9a84c] px-10 py-5 text-base font-bold uppercase tracking-[0.2em] text-[#0d0d0d] transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,168,76,0.3)] sm:w-auto"
+              className="group relative mt-4 inline-flex w-full items-center justify-center gap-3 overflow-hidden bg-accent px-10 py-5 text-base font-bold uppercase tracking-[0.2em] text-accent-fg transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,168,76,0.3)] sm:w-auto"
             >
-              <span className="relative z-10">Jetzt Buchen</span>
+              <span className="relative z-10">{t.contact.bookNow[lang]}</span>
               <svg className="relative z-10 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -136,13 +136,13 @@ export default function Contact() {
             </a>
           </motion.div>
 
-          {/* Map placeholder */}
+          {/* Map */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative overflow-hidden bg-[#1a1a1a] min-h-[400px] lg:min-h-0"
+            className="relative overflow-hidden bg-card min-h-[400px] lg:min-h-0"
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.123456789!2d16.3705!3d48.2082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDEyJzI5LjUiTiAxNsKwMjInMTMuOCJF!5e0!3m2!1sde!2sat!4v1234567890"
@@ -152,8 +152,7 @@ export default function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Standort"
             />
-            {/* Map overlay */}
-            <div className="pointer-events-none absolute inset-0 border border-[#2a2a2a]" />
+            <div className="pointer-events-none absolute inset-0 border border-border" />
           </motion.div>
         </div>
       </div>
