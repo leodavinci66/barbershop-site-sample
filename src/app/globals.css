@@ -31,16 +31,16 @@
 
 /* Light mode */
 .light {
-  --bg: #f5f0e8;
-  --fg: #1a1a1a;
-  --surface: #eae5dc;
-  --card: #ffffff;
-  --footer: #e0dbd2;
-  --muted: #6b6b6b;
-  --border: #d4cfc6;
-  --accent: #a08530;
-  --accent-hover: #8a7228;
-  --accent-fg: #ffffff;
+  --bg: #2c2824;
+  --fg: #e8e0d4;
+  --surface: #342f2a;
+  --card: #3a3530;
+  --footer: #242019;
+  --muted: #9a9088;
+  --border: #4a443d;
+  --accent: #c9a84c;
+  --accent-hover: #dabb5e;
+  --accent-fg: #1a1510;
 }
 
 @font-face {
