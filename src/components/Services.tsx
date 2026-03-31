@@ -84,10 +84,10 @@ export default function Services() {
           {services.map((service, i) => (
             <motion.div
               key={service.name}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -8 }}
               className="group relative overflow-hidden bg-[#1a1a1a] p-8 transition-all duration-500 border border-transparent hover:border-[#c9a84c]/30"
             >

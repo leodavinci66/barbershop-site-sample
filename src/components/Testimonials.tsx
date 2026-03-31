@@ -51,10 +51,10 @@ export default function Testimonials() {
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+              transition={{ duration: 0.5 }}
               className="group relative bg-[#1a1a1a] p-8 border border-[#2a2a2a] transition-all duration-500 hover:border-[#c9a84c]/20"
             >
               {/* Quote mark */}
