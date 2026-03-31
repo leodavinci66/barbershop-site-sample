@@ -68,6 +68,7 @@ body {
   color: var(--fg);
   font-family: "DM Sans", system-ui, sans-serif;
   transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
 }
 
 /* Grain texture overlay */

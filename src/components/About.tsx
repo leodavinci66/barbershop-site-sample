@@ -7,7 +7,7 @@ export default function About() {
   const { lang, t } = useTranslation();
 
   return (
-    <section id="about" className="relative bg-bg py-32 overflow-hidden">
+    <section id="about" className="relative bg-bg py-32 overflow-x-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-24 bg-gradient-to-r from-transparent via-accent to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -28,14 +28,14 @@ export default function About() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg/60 to-transparent" />
             </div>
-            <div className="absolute -bottom-4 -right-4 h-full w-full border-2 border-accent/20 -z-10" />
+            <div className="absolute -bottom-4 right-0 lg:-right-4 h-full w-full border-2 border-accent/20 -z-10" />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="absolute -bottom-6 -right-6 bg-accent p-6 lg:-right-12"
+              className="absolute -bottom-6 right-0 bg-accent p-6 lg:-right-12"
             >
               <div className="text-center">
                 <span className="block font-serif text-4xl font-bold text-accent-fg">15+</span>
