@@ -32,117 +32,119 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-bg/90 backdrop-blur-xl border-b border-border/50"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        {/* Logo */}
-        <a href="#" className="font-serif text-xl font-bold tracking-wider uppercase text-fg">
-          Barbershop <span className="text-accent">Wien</span>
-        </a>
-
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="group relative text-sm font-medium tracking-wider uppercase text-muted transition-colors hover:text-fg"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </div>
-
-        {/* Right side: toggles + CTA */}
-        <div className="hidden lg:flex items-center gap-4">
-          {/* Language toggle */}
-          <button
-            onClick={() => setLang(lang === "de" ? "en" : "de")}
-            className="flex items-center gap-1.5 border border-border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted transition-all hover:border-accent/50 hover:text-fg"
-          >
-            {lang === "de" ? "EN" : "DE"}
-          </button>
-
-          {/* Theme toggle */}
-          <button
-            onClick={toggleTheme}
-            className="flex h-8 w-8 items-center justify-center border border-border text-muted transition-all hover:border-accent/50 hover:text-fg"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? (
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-              </svg>
-            ) : (
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-              </svg>
-            )}
-          </button>
-
-          {/* CTA */}
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-accent px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-accent-fg transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]"
-          >
-            {t.nav.bookNow[lang]}
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-bg/90 backdrop-blur-xl border-b border-border/50"
+            : "bg-transparent"
+        }`}
+      >
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+          {/* Logo */}
+          <a href="#" className="font-serif text-xl font-bold tracking-wider uppercase text-fg">
+            Barbershop <span className="text-accent">Wien</span>
           </a>
-        </div>
 
-        {/* Mobile: toggles + hamburger */}
-        <div className="flex lg:hidden items-center gap-3">
-          <button
-            onClick={() => setLang(lang === "de" ? "en" : "de")}
-            className="text-xs font-semibold uppercase tracking-wider text-muted"
-          >
-            {lang === "de" ? "EN" : "DE"}
-          </button>
-          <button
-            onClick={toggleTheme}
-            className="flex h-8 w-8 items-center justify-center text-muted"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? (
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-              </svg>
-            ) : (
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-              </svg>
-            )}
-          </button>
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
-            aria-label="Menu"
-          >
-            <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="block h-[2px] w-6 bg-fg origin-center"
-            />
-            <motion.span
-              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block h-[2px] w-6 bg-fg"
-            />
-            <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="block h-[2px] w-6 bg-fg origin-center"
-            />
-          </button>
-        </div>
-      </nav>
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-10">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="group relative text-sm font-medium tracking-wider uppercase text-muted transition-colors hover:text-fg"
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+          </div>
 
-      {/* Mobile Menu */}
+          {/* Right side: toggles + CTA */}
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Language toggle */}
+            <button
+              onClick={() => setLang(lang === "de" ? "en" : "de")}
+              className="flex items-center gap-1.5 border border-border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted transition-all hover:border-accent/50 hover:text-fg"
+            >
+              {lang === "de" ? "EN" : "DE"}
+            </button>
+
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              className="flex h-8 w-8 items-center justify-center border border-border text-muted transition-all hover:border-accent/50 hover:text-fg"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+              ) : (
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+              )}
+            </button>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-accent px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-accent-fg transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]"
+            >
+              {t.nav.bookNow[lang]}
+            </a>
+          </div>
+
+          {/* Mobile: toggles + hamburger */}
+          <div className="flex lg:hidden items-center gap-3">
+            <button
+              onClick={() => setLang(lang === "de" ? "en" : "de")}
+              className="text-xs font-semibold uppercase tracking-wider text-muted"
+            >
+              {lang === "de" ? "EN" : "DE"}
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="flex h-8 w-8 items-center justify-center text-muted"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+              ) : (
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+              )}
+            </button>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+              aria-label="Menu"
+            >
+              <motion.span
+                animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                className="block h-[2px] w-6 bg-fg origin-center"
+              />
+              <motion.span
+                animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+                className="block h-[2px] w-6 bg-fg"
+              />
+              <motion.span
+                animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                className="block h-[2px] w-6 bg-fg origin-center"
+              />
+            </button>
+          </div>
+        </nav>
+      </motion.header>
+
+      {/* Mobile Menu — outside header so backdrop-blur doesn't break fixed positioning */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -178,6 +180,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 }
